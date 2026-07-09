@@ -12,8 +12,8 @@
   "commands": [
     {
       "name": "index",
-      "title": "Team Time",
-      "description": "Shows the team's timezones as subtitle",
+      "title": "Current Date",
+      "description": "Shows the current date as subtitle",
       "mode": "no-view",
       "interval": "1m"
     }
@@ -22,9 +22,9 @@
     "@raycast/api": "latest"
   },
   "devDependencies": {
-    "@raycast/eslint-config": "^1.0.6",
+    "@raycast/eslint-config": "^2.2.0",
     "@types/node": "18.18.4",
-    "eslint": "^8.51.0",
+    "eslint": "^9.39.4",
     "prettier": "^3.0.3",
     "typescript": "^5.2.2"
   },

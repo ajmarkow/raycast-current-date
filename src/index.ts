@@ -3,12 +3,14 @@ import { Clipboard, environment, LaunchType, Toast, updateCommandMetadata } from
 const command = async () => {
   const now = new Date();
 
-  const london = now.toLocaleString(undefined, { timeZone: "Europe/London", timeStyle: "short" });
-  const berlin = now.toLocaleString(undefined, { timeZone: "Europe/Berlin", timeStyle: "short" });
-  const moscow = now.toLocaleString(undefined, { timeZone: "Europe/Moscow", timeStyle: "short" });
-  const india = now.toLocaleString(undefined, { timeZone: "Asia/Kolkata", timeStyle: "short" });
+  const date = now.toLocaleDateString(undefined, {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
 
-  const subtitle = `🇬🇧 ${london}   🇳🇱🇩🇪🇳🇴🇩🇰🇵🇱 ${berlin}   🇷🇺 ${moscow}   🇮🇳 ${india}`;
+  const subtitle = `📅 ${date}`;
   await updateCommandMetadata({ subtitle });
 
   if (environment.launchType === LaunchType.UserInitiated) {
