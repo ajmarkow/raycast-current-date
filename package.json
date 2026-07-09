@@ -13,9 +13,8 @@
     {
       "name": "index",
       "title": "Current Date",
-      "description": "Shows the current date as subtitle",
-      "mode": "no-view",
-      "interval": "1m"
+      "description": "Shows the current date",
+      "mode": "view"
     }
   ],
   "dependencies": {
