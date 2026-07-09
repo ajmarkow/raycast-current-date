@@ -14,8 +14,6 @@ const MONTHS = [
   "December",
 ];
 
-const pad = (n: number, width = 2) => String(n).padStart(width, "0");
-
 export interface DateParts {
   year: number;
   month: number; // 1-12
@@ -30,20 +28,21 @@ export interface DateParts {
 export function strftime(format: string, parts: DateParts): string {
   const hour12 = parts.hour % 12 === 0 ? 12 : parts.hour % 12;
 
+  const p = (n: number) => String(n).padStart(2, "0");
   const directives: Record<string, string> = {
     "%Y": String(parts.year),
-    "%y": pad(parts.year % 100),
-    "%m": pad(parts.month),
+    "%y": p(parts.year % 100),
+    "%m": p(parts.month),
     "%-m": String(parts.month),
-    "%d": pad(parts.day),
+    "%d": p(parts.day),
     "%-d": String(parts.day),
-    "%H": pad(parts.hour),
+    "%H": p(parts.hour),
     "%-H": String(parts.hour),
-    "%I": pad(hour12),
+    "%I": p(hour12),
     "%-I": String(hour12),
-    "%M": pad(parts.minute),
+    "%M": p(parts.minute),
     "%-M": String(parts.minute),
-    "%S": pad(parts.second),
+    "%S": p(parts.second),
     "%-S": String(parts.second),
     "%p": parts.hour < 12 ? "AM" : "PM",
     "%A": WEEKDAYS[parts.weekday],

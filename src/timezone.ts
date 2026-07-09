@@ -1,4 +1,3 @@
-import { getPreferenceValues } from "@raycast/api";
 import { DateParts } from "./strftime";
 
 export interface Preferences {
@@ -11,13 +10,6 @@ export interface Preferences {
 function parseUtcOffsetHours(offset: string): number {
   const match = /^UTC([+-]\d{1,2})$/.exec(offset);
   return match ? Number(match[1]) : 0;
-}
-
-// Raycast preferences can't make one dropdown's options depend on another
-// preference's value, so IANA and UTC offset are separate preferences and
-// timezoneType picks which one is actually used.
-export function getSelectedTimezone(prefs: Preferences): string {
-  return prefs.timezoneType === "utc" ? prefs.utcOffset : prefs.ianaTimezone;
 }
 
 // Resolves the wall-clock date/time fields for the user's preferred timezone.
@@ -62,8 +54,4 @@ export function getZonedParts(now: Date, prefs: Preferences): DateParts {
     second: get("second"),
     weekday: weekdays.indexOf(weekdayName),
   };
-}
-
-export function getPreferences(): Preferences {
-  return getPreferenceValues<Preferences>();
 }
