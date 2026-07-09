@@ -14,7 +14,7 @@
       "name": "index",
       "title": "Current Date",
       "description": "Shows the current date in root search, formatted per your preferences",
-      "mode": "menu-bar",
+      "mode": "view",
       "preferences": [
         {
           "name": "timezoneType",
@@ -1838,8 +1838,7 @@
           "required": false,
           "default": "%A, %B %d, %Y"
         }
-      ],
-      "interval": "1m"
+      ]
     }
   ],
   "dependencies": {

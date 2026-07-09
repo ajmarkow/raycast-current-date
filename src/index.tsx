@@ -1,4 +1,4 @@
-import { Clipboard, getPreferenceValues, MenuBarExtra, showHUD } from "@raycast/api";
+import { Action, ActionPanel, getPreferenceValues, List } from "@raycast/api";
 import { strftime } from "./strftime";
 import { getZonedParts, Preferences } from "./timezone";
 
@@ -8,15 +8,19 @@ export default function Command() {
   const formatted = strftime(prefs.dateFormat || "%A, %B %d, %Y", parts);
 
   return (
-    <MenuBarExtra title={formatted}>
-      <MenuBarExtra.Item
-        title="Copy to Clipboard"
-        shortcut={{ modifiers: ["cmd"], key: "c" }}
-        onAction={async () => {
-          await Clipboard.copy(formatted);
-          await showHUD("Copied to Clipboard");
-        }}
+    <List>
+      <List.Item
+        title={formatted}
+        actions={
+          <ActionPanel>
+            <Action.CopyToClipboard
+              title="Copy to Clipboard"
+              content={formatted}
+              shortcut={{ modifiers: ["cmd"], key: "c" }}
+            />
+          </ActionPanel>
+        }
       />
-    </MenuBarExtra>
+    </List>
   );
 }
