@@ -1,7 +1,7 @@
 import { Action, ActionPanel, List } from "@raycast/api";
 import { useEffect, useState } from "react";
 import { strftime } from "./strftime";
-import { getPreferences, getZonedParts } from "./timezone";
+import { getPreferences, getSelectedTimezone, getZonedParts } from "./timezone";
 
 export default function Command() {
   const [now, setNow] = useState(new Date());
@@ -20,7 +20,7 @@ export default function Command() {
       <List.Item
         icon="📅"
         title={formatted}
-        subtitle={prefs.timezone}
+        subtitle={getSelectedTimezone(prefs)}
         actions={
           <ActionPanel>
             <Action.CopyToClipboard title="Copy to Clipboard" content={formatted} />

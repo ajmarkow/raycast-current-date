@@ -3,7 +3,8 @@ import { DateParts } from "./strftime";
 
 export interface Preferences {
   timezoneType: "iana" | "utc";
-  timezone: string;
+  ianaTimezone: string;
+  utcOffset: string;
   dateFormat: string;
 }
 
@@ -12,12 +13,19 @@ function parseUtcOffsetHours(offset: string): number {
   return match ? Number(match[1]) : 0;
 }
 
+// Raycast preferences can't make one dropdown's options depend on another
+// preference's value, so IANA and UTC offset are separate preferences and
+// timezoneType picks which one is actually used.
+export function getSelectedTimezone(prefs: Preferences): string {
+  return prefs.timezoneType === "utc" ? prefs.utcOffset : prefs.ianaTimezone;
+}
+
 // Resolves the wall-clock date/time fields for the user's preferred timezone.
 // IANA zones use Intl (handles DST); UTC offsets are fixed, so we shift the
 // instant manually and read its UTC fields.
 export function getZonedParts(now: Date, prefs: Preferences): DateParts {
   if (prefs.timezoneType === "utc") {
-    const shifted = new Date(now.getTime() + parseUtcOffsetHours(prefs.timezone) * 3600_000);
+    const shifted = new Date(now.getTime() + parseUtcOffsetHours(prefs.utcOffset) * 3600_000);
     return {
       year: shifted.getUTCFullYear(),
       month: shifted.getUTCMonth() + 1,
@@ -30,7 +38,7 @@ export function getZonedParts(now: Date, prefs: Preferences): DateParts {
   }
 
   const parts = new Intl.DateTimeFormat("en-US", {
-    timeZone: prefs.timezone,
+    timeZone: prefs.ianaTimezone,
     year: "numeric",
     month: "numeric",
     day: "numeric",

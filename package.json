@@ -20,7 +20,7 @@
           "name": "timezoneType",
           "type": "dropdown",
           "title": "Timezone Format",
-          "description": "Choose whether the Timezone preference below is an IANA timezone name or a fixed UTC offset.",
+          "description": "Choose whether to use an IANA timezone name or a fixed UTC offset. This determines which of the two preferences below is used.",
           "required": false,
           "default": "iana",
           "data": [
@@ -35,10 +35,10 @@
           ]
         },
         {
-          "name": "timezone",
+          "name": "ianaTimezone",
           "type": "dropdown",
-          "title": "Timezone",
-          "description": "The timezone to display. Valid options depend on the Timezone Format above: pick an IANA name when using \"iana\", or a UTC offset when using \"utc\".",
+          "title": "IANA Timezone",
+          "description": "Used when Timezone Format above is set to \"IANA Timezone\".",
           "required": false,
           "default": "Europe/London",
           "data": [
@@ -1709,7 +1709,17 @@
             {
               "title": "Pacific/Wallis",
               "value": "Pacific/Wallis"
-            },
+            }
+          ]
+        },
+        {
+          "name": "utcOffset",
+          "type": "dropdown",
+          "title": "UTC Offset",
+          "description": "Used when Timezone Format above is set to \"UTC Offset\".",
+          "required": false,
+          "default": "UTC+0",
+          "data": [
             {
               "title": "UTC-12",
               "value": "UTC-12"
