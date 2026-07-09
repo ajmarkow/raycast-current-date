@@ -1,8 +1,8 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
-  "name": "team-time",
-  "title": "Team Time",
-  "description": "Quick overview of the team's timezones",
+  "name": "current-date",
+  "title": "Current Date",
+  "description": "Shows the current date in root search, formatted per your preferences",
   "icon": "icon.png",
   "author": "thomas",
   "categories": [
