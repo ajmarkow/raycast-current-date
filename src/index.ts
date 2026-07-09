@@ -17,7 +17,7 @@ const command = async () => {
     });
     toast.primaryAction = {
       title: "Copy to Clipboard",
-      shortcut: { modifiers: ["cmd", "shift"], key: "c" },
+      shortcut: { modifiers: ["ctrl"], key: "c" },
       onAction: () => Clipboard.copy(formatted),
     };
     await toast.show();
