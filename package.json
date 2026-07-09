@@ -14,6 +14,7 @@
       "name": "index",
       "title": "Current Date",
       "description": "Shows the current date in root search, formatted per your preferences. Opening the command copies the date to the clipboard, overwriting its existing contents.",
+      "icon": "icon.png",
       "mode": "no-view",
       "preferences": [
         {
