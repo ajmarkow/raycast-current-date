@@ -13,7 +13,7 @@ const command = async () => {
     const toast = new Toast({
       style: Toast.Style.Success,
       title: "Refreshed!",
-      message: formatted,
+      message: `${formatted} · Press ⌃C to copy`,
     });
     toast.primaryAction = {
       title: "Copy to Clipboard",
