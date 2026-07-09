@@ -13,8 +13,8 @@
     {
       "name": "index",
       "title": "Current Date",
-      "description": "Shows the current date in root search, formatted per your preferences",
-      "mode": "view",
+      "description": "Shows the current date in root search, formatted per your preferences. Opening the command copies the date to the clipboard, overwriting its existing contents.",
+      "mode": "no-view",
       "preferences": [
         {
           "name": "timezoneType",
@@ -1838,7 +1838,8 @@
           "required": false,
           "default": "%A, %B %d, %Y"
         }
-      ]
+      ],
+      "interval": "1m"
     }
   ],
   "dependencies": {
