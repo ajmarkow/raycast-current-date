@@ -7,7 +7,7 @@ const command = async () => {
   const parts = getZonedParts(new Date(), prefs);
   const formatted = strftime(prefs.dateFormat || "%A, %B %d, %Y", parts);
 
-  await updateCommandMetadata({ subtitle: `${formatted} | ⌘C or click to copy` });
+  await updateCommandMetadata({ subtitle: `${formatted} | ⌘⇧C to copy` });
 };
 
 export default command;
