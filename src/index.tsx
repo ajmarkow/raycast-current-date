@@ -11,6 +11,7 @@ export default function Command() {
     <MenuBarExtra title={formatted}>
       <MenuBarExtra.Item
         title="Copy to Clipboard"
+        shortcut={{ modifiers: ["cmd"], key: "c" }}
         onAction={async () => {
           await Clipboard.copy(formatted);
           await showHUD("Copied to Clipboard");
