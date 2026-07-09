@@ -1,10 +1,10 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
-  "name": "current-date",
-  "title": "Current Date",
+  "name": "todays-date",
+  "title": "Today's Date",
   "description": "Shows the current date in root search, formatted per your preferences",
   "icon": "icon.png",
-  "author": "thomas",
+  "author": "AJ Markow",
   "categories": [
     "Productivity"
   ],
@@ -12,7 +12,7 @@
   "commands": [
     {
       "name": "index",
-      "title": "Current Date",
+      "title": "Today's Date",
       "description": "Shows the current date in root search, formatted per your preferences. Opening the command copies the date to the clipboard, overwriting its existing contents.",
       "icon": "icon.png",
       "mode": "no-view",
