@@ -14,7 +14,7 @@ const command = async () => {
     await new Toast({
       style: Toast.Style.Success,
       title: "Copied to Clipboard",
-      message: `${formatted} — this replaced your previous clipboard contents`,
+      message: `${formatted} · Copied to clipboard`,
     }).show();
   }
 };
