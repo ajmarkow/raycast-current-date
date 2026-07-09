@@ -1,16 +1,7 @@
 import { Action, ActionPanel, List } from "@raycast/api";
 import { useEffect, useState } from "react";
-
-const ZONES: { flag: string; label: string; timeZone: string }[] = [
-  { flag: "🇬🇧", label: "UK", timeZone: "Europe/London" },
-  { flag: "🇳🇱🇩🇪🇳🇴🇩🇰🇵🇱", label: "Central Europe", timeZone: "Europe/Berlin" },
-  { flag: "🇷🇺", label: "Moscow", timeZone: "Europe/Moscow" },
-  { flag: "🇮🇳", label: "India", timeZone: "Asia/Kolkata" },
-];
-
-function formatTime(now: Date, timeZone: string) {
-  return now.toLocaleString(undefined, { timeZone, timeStyle: "short" });
-}
+import { strftime } from "./strftime";
+import { getPreferences, getZonedParts } from "./timezone";
 
 export default function Command() {
   const [now, setNow] = useState(new Date());
@@ -20,23 +11,22 @@ export default function Command() {
     return () => clearInterval(interval);
   }, []);
 
-  const subtitle = ZONES.map((zone) => `${zone.flag} ${formatTime(now, zone.timeZone)}`).join("   ");
+  const prefs = getPreferences();
+  const parts = getZonedParts(now, prefs);
+  const formatted = strftime(prefs.dateFormat || "%A, %B %d, %Y", parts);
 
   return (
     <List>
-      {ZONES.map((zone) => (
-        <List.Item
-          key={zone.timeZone}
-          icon={zone.flag}
-          title={zone.label}
-          subtitle={formatTime(now, zone.timeZone)}
-          actions={
-            <ActionPanel>
-              <Action.CopyToClipboard title="Copy to Clipboard" content={subtitle} />
-            </ActionPanel>
-          }
-        />
-      ))}
+      <List.Item
+        icon="📅"
+        title={formatted}
+        subtitle={prefs.timezone}
+        actions={
+          <ActionPanel>
+            <Action.CopyToClipboard title="Copy to Clipboard" content={formatted} />
+          </ActionPanel>
+        }
+      />
     </List>
   );
 }
