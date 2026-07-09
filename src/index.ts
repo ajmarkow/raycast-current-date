@@ -1,4 +1,4 @@
-import { Clipboard, environment, getPreferenceValues, LaunchType, Toast, updateCommandMetadata } from "@raycast/api";
+import { getPreferenceValues, updateCommandMetadata } from "@raycast/api";
 import { strftime } from "./strftime";
 import { getZonedParts, Preferences } from "./timezone";
 
@@ -8,11 +8,6 @@ const command = async () => {
   const formatted = strftime(prefs.dateFormat || "%A, %B %d, %Y", parts);
 
   await updateCommandMetadata({ subtitle: `${formatted} | ⌘C or click to copy` });
-
-  if (environment.launchType === LaunchType.UserInitiated) {
-    await Clipboard.copy(formatted);
-    await new Toast({ style: Toast.Style.Success, title: "Copied to Clipboard", message: formatted }).show();
-  }
 };
 
 export default command;
