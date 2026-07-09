@@ -11,7 +11,7 @@ const command = async () => {
 
   if (environment.launchType === LaunchType.UserInitiated) {
     await Clipboard.copy(formatted);
-    await new Toast({ style: Toast.Style.Success, title: "Copied!", message: formatted }).show();
+    await new Toast({ style: Toast.Style.Success, title: "Copied to Clipboard", message: formatted }).show();
   }
 };
 
