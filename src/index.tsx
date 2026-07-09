@@ -1,4 +1,4 @@
-import { Action, ActionPanel, getPreferenceValues, List } from "@raycast/api";
+import { Action, ActionPanel, getPreferenceValues, List, popToRoot } from "@raycast/api";
 import { strftime } from "./strftime";
 import { getZonedParts, Preferences } from "./timezone";
 
@@ -17,6 +17,7 @@ export default function Command() {
               title="Copy to Clipboard"
               content={formatted}
               shortcut={{ modifiers: ["cmd"], key: "c" }}
+              onCopy={() => popToRoot()}
             />
           </ActionPanel>
         }
