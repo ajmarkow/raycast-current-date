@@ -7,7 +7,7 @@ const command = async () => {
   const parts = getZonedParts(new Date(), prefs);
   const formatted = strftime(prefs.dateFormat || "%A, %B %d, %Y", parts);
 
-  await updateCommandMetadata({ subtitle: `${formatted} | Press ⌃C to copy` });
+  await updateCommandMetadata({ subtitle: `${formatted} | Press ⌘C to copy` });
 
   if (environment.launchType === LaunchType.UserInitiated) {
     await Clipboard.copy(formatted);
