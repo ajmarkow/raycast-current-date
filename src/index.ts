@@ -1,4 +1,4 @@
-import { Clipboard, getPreferenceValues, Toast, updateCommandMetadata } from "@raycast/api";
+import { Clipboard, environment, getPreferenceValues, LaunchType, Toast, updateCommandMetadata } from "@raycast/api";
 import { strftime } from "./strftime";
 import { getZonedParts, Preferences } from "./timezone";
 
