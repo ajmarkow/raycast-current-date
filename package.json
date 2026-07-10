@@ -11,7 +11,7 @@
   "license": "MIT",
   "commands": [
     {
-      "name": "index",
+      "name": "show-date",
       "title": "Today's Date",
       "description": "Copies the formatted date and time to your clipboard",
       "mode": "no-view",
