@@ -1,9 +1,10 @@
 ---
 id: TASK-5
 title: Add missing common strftime directives
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-07-10 03:32'
+updated_date: '2026-07-10 20:25'
 labels:
   - feature
   - strftime
@@ -20,10 +21,16 @@ src/strftime.ts:32-53 supports the core directives but is missing %F (=%Y-%m-%d)
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 %F renders as YYYY-MM-DD
-- [ ] #2 %T renders as HH:MM:SS (24-hour)
-- [ ] #3 %R renders as HH:MM (24-hour)
-- [ ] #4 %e renders day-of-month space-padded (e.g. ' 7' for the 7th)
-- [ ] #5 %z renders as +HHMM or -HHMM for both IANA and UTC-offset timezone modes
-- [ ] #6 Existing directives still pass all previous behavior
+- [x] #1 %F renders as YYYY-MM-DD
+- [x] #2 %T renders as HH:MM:SS (24-hour)
+- [x] #3 %R renders as HH:MM (24-hour)
+- [x] #4 %e renders day-of-month space-padded (e.g. ' 7' for the 7th)
+- [x] #5 %z renders as +HHMM or -HHMM for both IANA and UTC-offset timezone modes
+- [x] #6 Existing directives still pass all previous behavior
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Added %F=%Y-%m-%d, %T=%H:%M:%S, %R=%H:%M, %e=space-padded day, %z=±HHMM. Extended DateParts with utcOffsetMinutes; getZonedParts populates it for both UTC (via parseUtcOffsetHours*60) and IANA (via timeZoneName:'shortOffset' parsed to minutes).
+<!-- SECTION:NOTES:END -->

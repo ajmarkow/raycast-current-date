@@ -22,6 +22,7 @@ export interface DateParts {
   minute: number;
   second: number;
   weekday: number; // 0-6, Sunday-based
+  utcOffsetMinutes: number; // signed offset from UTC, e.g. +330 for UTC+5:30
 }
 
 // Minimal strftime supporting the common devhints.io/strftime directives.
@@ -29,6 +30,8 @@ export function strftime(format: string, parts: DateParts): string {
   const hour12 = parts.hour % 12 === 0 ? 12 : parts.hour % 12;
 
   const p = (n: number) => String(n).padStart(2, "0");
+  const zSign = parts.utcOffsetMinutes >= 0 ? "+" : "-";
+  const zAbs = Math.abs(parts.utcOffsetMinutes);
   const directives: Record<string, string> = {
     "%Y": String(parts.year),
     "%y": p(parts.year % 100),
@@ -36,6 +39,7 @@ export function strftime(format: string, parts: DateParts): string {
     "%-m": String(parts.month),
     "%d": p(parts.day),
     "%-d": String(parts.day),
+    "%e": String(parts.day).padStart(2, " "),
     "%H": p(parts.hour),
     "%-H": String(parts.hour),
     "%I": p(hour12),
@@ -49,6 +53,10 @@ export function strftime(format: string, parts: DateParts): string {
     "%a": WEEKDAYS[parts.weekday].slice(0, 3),
     "%B": MONTHS[parts.month - 1],
     "%b": MONTHS[parts.month - 1].slice(0, 3),
+    "%F": `${parts.year}-${p(parts.month)}-${p(parts.day)}`,
+    "%T": `${p(parts.hour)}:${p(parts.minute)}:${p(parts.second)}`,
+    "%R": `${p(parts.hour)}:${p(parts.minute)}`,
+    "%z": `${zSign}${p(Math.floor(zAbs / 60))}${p(zAbs % 60)}`,
     "%%": "%",
   };
 
