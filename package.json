@@ -2,7 +2,7 @@
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "todays-date",
   "title": "Today's Date",
-  "description": "Shows the current date in root search, formatted per your preferences",
+  "description": "Shows the current date and time in root search, formatted per your strftime preferences",
   "icon": "icon.png",
   "author": "AJ Markow",
   "categories": [
@@ -13,7 +13,7 @@
     {
       "name": "index",
       "title": "Today's Date",
-      "description": "Shows the current date in root search, formatted per your preferences. Opening the command copies the date to the clipboard, overwriting its existing contents.",
+      "description": "Copies the formatted date and time to your clipboard",
       "icon": "icon.png",
       "mode": "no-view",
       "preferences": [
