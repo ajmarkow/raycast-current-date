@@ -1,9 +1,10 @@
 ---
 id: TASK-10
 title: Tighten preference descriptions to not depend on visual ordering
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-07-10 03:32'
+updated_date: '2026-07-10 20:13'
 labels:
   - copy
   - manifest
@@ -21,5 +22,11 @@ package.json:24 ('Timezone Format') description says 'This determines which of t
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 package.json:24 description no longer uses 'below' or 'above' and instead references sibling preferences by their quoted title
+- [x] #1 package.json:24 description no longer uses 'below' or 'above' and instead references sibling preferences by their quoted title
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Replaced 'the two preferences below' with explicit quoted names 'IANA Timezone' and 'UTC Offset' in the Timezone Format description.
+<!-- SECTION:NOTES:END -->
