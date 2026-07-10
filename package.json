@@ -4,7 +4,7 @@
   "title": "Today's Date",
   "description": "Shows the current date and time in root search, formatted per your strftime preferences",
   "icon": "icon.png",
-  "author": "AJ Markow",
+  "author": "ajm",
   "categories": [
     "Productivity"
   ],
