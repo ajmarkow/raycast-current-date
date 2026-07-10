@@ -1,9 +1,10 @@
 ---
 id: TASK-8
 title: Align IANA timezone default with UTC+0 default
-status: To Do
+status: Done
 assignee: []
 created_date: '2026-07-10 03:32'
+updated_date: '2026-07-10 20:13'
 labels:
   - manifest
   - defaults
@@ -20,7 +21,13 @@ package.json:44 defaults ianaTimezone to 'Europe/London' while package.json:1722
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 'Etc/UTC' is added as an entry in the ianaTimezone dropdown data in package.json
-- [ ] #2 package.json:44 default is changed to 'Etc/UTC'
-- [ ] #3 Behavior at first run in IANA mode matches behavior in UTC mode with the default UTC+0
+- [x] #1 'Etc/UTC' is added as an entry in the ianaTimezone dropdown data in package.json
+- [x] #2 package.json:44 default is changed to 'Etc/UTC'
+- [x] #3 Behavior at first run in IANA mode matches behavior in UTC mode with the default UTC+0
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Added Etc/UTC entry to ianaTimezone dropdown (between Australia/Sydney and Europe/Amsterdam). Changed default from Europe/London to Etc/UTC so both timezone modes agree at first run.
+<!-- SECTION:NOTES:END -->

@@ -20,7 +20,7 @@
           "name": "timezoneType",
           "type": "dropdown",
           "title": "Timezone Format",
-          "description": "Choose whether to use an IANA timezone name or a fixed UTC offset. This determines which of the two preferences below is used.",
+          "description": "Choose whether to use an IANA timezone name or a fixed UTC offset. This determines whether the \"IANA Timezone\" or \"UTC Offset\" preference is used.",
           "required": false,
           "default": "iana",
           "data": [
@@ -40,7 +40,7 @@
           "title": "IANA Timezone",
           "description": "Used when Timezone Format above is set to \"IANA Timezone\".",
           "required": false,
-          "default": "Europe/London",
+          "default": "Etc/UTC",
           "data": [
             {
               "title": "Africa/Abidjan",
@@ -1283,6 +1283,10 @@
               "value": "Australia/Sydney"
             },
             {
+              "title": "Etc/UTC",
+              "value": "Etc/UTC"
+            },
+            {
               "title": "Europe/Amsterdam",
               "value": "Europe/Amsterdam"
             },
@@ -1716,7 +1720,7 @@
           "name": "utcOffset",
           "type": "dropdown",
           "title": "UTC Offset",
-          "description": "Used when Timezone Format above is set to \"UTC Offset\".",
+          "description": "Used when Timezone Format above is set to \"UTC Offset\". Covers whole-hour offsets only (UTC-12 through UTC+14). For half-hour and 45-minute zones such as India (UTC+5:30), Nepal (UTC+5:45), or Newfoundland (UTC-3:30), use \"IANA Timezone\" instead.",
           "required": false,
           "default": "UTC+0",
           "data": [
