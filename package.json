@@ -14,7 +14,6 @@
       "name": "index",
       "title": "Today's Date",
       "description": "Copies the formatted date and time to your clipboard",
-      "icon": "icon.png",
       "mode": "no-view",
       "preferences": [
         {
