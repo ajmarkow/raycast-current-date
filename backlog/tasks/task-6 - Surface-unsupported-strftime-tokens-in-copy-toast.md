@@ -1,9 +1,11 @@
 ---
 id: TASK-6
 title: Surface unsupported strftime tokens in copy toast
-status: To Do
-assignee: []
+status: Done
+assignee:
+  - '@me'
 created_date: '2026-07-10 03:32'
+updated_date: '2026-07-13 20:52'
 labels:
   - feature
   - ux
@@ -21,7 +23,21 @@ src/strftime.ts:55 silently passes unknown tokens through: format.replace(/%-?[A
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 After formatting, output is scanned for stray %[A-Za-z] tokens
-- [ ] #2 If any survive, the copy toast surfaces them to the user (e.g. 'Copied — unsupported tokens: %q, %V')
-- [ ] #3 Well-formed format strings still show the plain Success toast unchanged
+- [x] #1 After formatting, output is scanned for stray %[A-Za-z] tokens
+- [x] #2 If any survive, the copy toast surfaces them to the user (e.g. 'Copied — unsupported tokens: %q, %V')
+- [x] #3 Well-formed format strings still show the plain Success toast unchanged
 <!-- AC:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+## Summary
+Copy toast now surfaces unsupported strftime tokens instead of silently copying them.
+
+## Changes
+- src/index.ts: after formatting, output is scanned for surviving %[-_0]?[A-Za-z] tokens; if any remain, the Success toast message appends \"unsupported tokens: ...\" (deduped). Well-formed formats show the unchanged plain toast.
+
+## Testing
+- tsc --noEmit and npm run lint pass
+- Runtime checks: %A %B %d %Y -> no warning; %q/%-q -> flagged as %q; literal %% does not false-positive
+<!-- SECTION:NOTES:END -->

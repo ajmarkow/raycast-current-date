@@ -17,7 +17,7 @@ The subtitle refreshes every minute in the background.
 
 ## Format string
 
-The `Date Format` preference is a strftime template. Supported directives:
+The `Date Format` preference is a strftime template, rendered by the [strftime](https://github.com/samsonjs/strftime) library. The full POSIX strftime directive set is supported — see [devhints.io/strftime](https://devhints.io/strftime) for the complete reference. Common directives:
 
 | Directive | Meaning | Example |
 |---|---|---|
@@ -26,13 +26,22 @@ The `Date Format` preference is a strftime template. Supported directives:
 | `%m` / `%-m` | Month, zero-padded / unpadded | `07` / `7` |
 | `%B` / `%b` | Month name, full / abbreviated | `July` / `Jul` |
 | `%d` / `%-d` | Day of month, zero-padded / unpadded | `04` / `4` |
+| `%e` | Day of month, space-padded | ` 4` |
 | `%A` / `%a` | Weekday, full / abbreviated | `Friday` / `Fri` |
 | `%H` / `%-H` | Hour (24h), zero-padded / unpadded | `09` / `9` |
 | `%I` / `%-I` | Hour (12h), zero-padded / unpadded | `09` / `9` |
 | `%M` / `%-M` | Minute, zero-padded / unpadded | `05` / `5` |
 | `%S` / `%-S` | Second, zero-padded / unpadded | `07` / `7` |
 | `%p` | AM/PM | `PM` |
+| `%j` | Day of year, 3 digits | `194` |
+| `%U` / `%W` | Week of year (Sunday-based / Monday-based) | `28` |
+| `%s` | Unix timestamp (seconds) | `1784376000` |
+| `%o` | Day of month with ordinal suffix | `4th` |
+| `%D` / `%F` | Shorthand for `%m/%d/%y` / `%Y-%m-%d` | `07/04/26` / `2026-07-04` |
+| `%r` / `%R` / `%T` | 12h time / `%H:%M` / `%H:%M:%S` | `02:32:07 PM` / `14:32` / `14:32:07` |
 | `%%` | Literal `%` | `%` |
+
+Any directive can be modified with `-` (no padding), `_` (space padding), or `0` (zero padding), e.g. `%-d`, `%_H`.
 
 ### Example formats
 
