@@ -10,9 +10,7 @@ The subtitle refreshes every minute in the background.
 
 | Preference | Type | Default | Description |
 |---|---|---|---|
-| Timezone Format | dropdown | IANA Timezone | Chooses whether the date is rendered using an IANA timezone name or a fixed UTC offset. Selects which of the two preferences below is used. |
-| IANA Timezone | dropdown | `Europe/London` | Any IANA zone (e.g. `America/Chicago`, `Asia/Tokyo`). Handles DST automatically. Used when Timezone Format is "IANA Timezone". |
-| UTC Offset | dropdown | `UTC+0` | Fixed offset from `UTC-12` through `UTC+14` in whole-hour steps. Used when Timezone Format is "UTC Offset". For `:30` or `:45` zones (India, Nepal, Newfoundland), pick an IANA timezone instead. |
+| Timezone | dropdown | `Etc/UTC` | Any IANA zone (e.g. `America/Chicago`, `Asia/Tokyo`) — handles DST automatically. Fixed offsets are listed as `UTC-12` through `UTC+14`. |
 | Date Format | textfield | `%A, %B %d, %Y` | strftime format string used to render the date. |
 
 ## Format string

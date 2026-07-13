@@ -17,28 +17,10 @@
       "mode": "no-view",
       "preferences": [
         {
-          "name": "timezoneType",
-          "type": "dropdown",
-          "title": "Timezone Format",
-          "description": "Choose whether to use an IANA timezone name or a fixed UTC offset. This determines whether the \"IANA Timezone\" or \"UTC Offset\" preference is used.",
-          "required": false,
-          "default": "iana",
-          "data": [
-            {
-              "title": "IANA Timezone (e.g. America/Chicago)",
-              "value": "iana"
-            },
-            {
-              "title": "UTC Offset (e.g. UTC+5)",
-              "value": "utc"
-            }
-          ]
-        },
-        {
           "name": "ianaTimezone",
           "type": "dropdown",
-          "title": "IANA Timezone",
-          "description": "Used when Timezone Format above is set to \"IANA Timezone\".",
+          "title": "Timezone",
+          "description": "IANA timezone used to render the date. Includes fixed UTC offsets (listed as UTC-12 through UTC+14).",
           "required": false,
           "default": "Etc/UTC",
           "data": [
@@ -1287,6 +1269,110 @@
               "value": "Etc/UTC"
             },
             {
+              "title": "UTC-12",
+              "value": "Etc/GMT+12"
+            },
+            {
+              "title": "UTC-11",
+              "value": "Etc/GMT+11"
+            },
+            {
+              "title": "UTC-10",
+              "value": "Etc/GMT+10"
+            },
+            {
+              "title": "UTC-9",
+              "value": "Etc/GMT+9"
+            },
+            {
+              "title": "UTC-8",
+              "value": "Etc/GMT+8"
+            },
+            {
+              "title": "UTC-7",
+              "value": "Etc/GMT+7"
+            },
+            {
+              "title": "UTC-6",
+              "value": "Etc/GMT+6"
+            },
+            {
+              "title": "UTC-5",
+              "value": "Etc/GMT+5"
+            },
+            {
+              "title": "UTC-4",
+              "value": "Etc/GMT+4"
+            },
+            {
+              "title": "UTC-3",
+              "value": "Etc/GMT+3"
+            },
+            {
+              "title": "UTC-2",
+              "value": "Etc/GMT+2"
+            },
+            {
+              "title": "UTC-1",
+              "value": "Etc/GMT+1"
+            },
+            {
+              "title": "UTC+1",
+              "value": "Etc/GMT-1"
+            },
+            {
+              "title": "UTC+2",
+              "value": "Etc/GMT-2"
+            },
+            {
+              "title": "UTC+3",
+              "value": "Etc/GMT-3"
+            },
+            {
+              "title": "UTC+4",
+              "value": "Etc/GMT-4"
+            },
+            {
+              "title": "UTC+5",
+              "value": "Etc/GMT-5"
+            },
+            {
+              "title": "UTC+6",
+              "value": "Etc/GMT-6"
+            },
+            {
+              "title": "UTC+7",
+              "value": "Etc/GMT-7"
+            },
+            {
+              "title": "UTC+8",
+              "value": "Etc/GMT-8"
+            },
+            {
+              "title": "UTC+9",
+              "value": "Etc/GMT-9"
+            },
+            {
+              "title": "UTC+10",
+              "value": "Etc/GMT-10"
+            },
+            {
+              "title": "UTC+11",
+              "value": "Etc/GMT-11"
+            },
+            {
+              "title": "UTC+12",
+              "value": "Etc/GMT-12"
+            },
+            {
+              "title": "UTC+13",
+              "value": "Etc/GMT-13"
+            },
+            {
+              "title": "UTC+14",
+              "value": "Etc/GMT-14"
+            },
+            {
               "title": "Europe/Amsterdam",
               "value": "Europe/Amsterdam"
             },
@@ -1713,124 +1799,6 @@
             {
               "title": "Pacific/Wallis",
               "value": "Pacific/Wallis"
-            }
-          ]
-        },
-        {
-          "name": "utcOffset",
-          "type": "dropdown",
-          "title": "UTC Offset",
-          "description": "Used when Timezone Format above is set to \"UTC Offset\". Covers whole-hour offsets only (UTC-12 through UTC+14). For half-hour and 45-minute zones such as India (UTC+5:30), Nepal (UTC+5:45), or Newfoundland (UTC-3:30), use \"IANA Timezone\" instead.",
-          "required": false,
-          "default": "UTC+0",
-          "data": [
-            {
-              "title": "UTC-12",
-              "value": "UTC-12"
-            },
-            {
-              "title": "UTC-11",
-              "value": "UTC-11"
-            },
-            {
-              "title": "UTC-10",
-              "value": "UTC-10"
-            },
-            {
-              "title": "UTC-9",
-              "value": "UTC-9"
-            },
-            {
-              "title": "UTC-8",
-              "value": "UTC-8"
-            },
-            {
-              "title": "UTC-7",
-              "value": "UTC-7"
-            },
-            {
-              "title": "UTC-6",
-              "value": "UTC-6"
-            },
-            {
-              "title": "UTC-5",
-              "value": "UTC-5"
-            },
-            {
-              "title": "UTC-4",
-              "value": "UTC-4"
-            },
-            {
-              "title": "UTC-3",
-              "value": "UTC-3"
-            },
-            {
-              "title": "UTC-2",
-              "value": "UTC-2"
-            },
-            {
-              "title": "UTC-1",
-              "value": "UTC-1"
-            },
-            {
-              "title": "UTC+0",
-              "value": "UTC+0"
-            },
-            {
-              "title": "UTC+1",
-              "value": "UTC+1"
-            },
-            {
-              "title": "UTC+2",
-              "value": "UTC+2"
-            },
-            {
-              "title": "UTC+3",
-              "value": "UTC+3"
-            },
-            {
-              "title": "UTC+4",
-              "value": "UTC+4"
-            },
-            {
-              "title": "UTC+5",
-              "value": "UTC+5"
-            },
-            {
-              "title": "UTC+6",
-              "value": "UTC+6"
-            },
-            {
-              "title": "UTC+7",
-              "value": "UTC+7"
-            },
-            {
-              "title": "UTC+8",
-              "value": "UTC+8"
-            },
-            {
-              "title": "UTC+9",
-              "value": "UTC+9"
-            },
-            {
-              "title": "UTC+10",
-              "value": "UTC+10"
-            },
-            {
-              "title": "UTC+11",
-              "value": "UTC+11"
-            },
-            {
-              "title": "UTC+12",
-              "value": "UTC+12"
-            },
-            {
-              "title": "UTC+13",
-              "value": "UTC+13"
-            },
-            {
-              "title": "UTC+14",
-              "value": "UTC+14"
             }
           ]
         },
