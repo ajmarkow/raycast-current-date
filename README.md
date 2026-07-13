@@ -1,6 +1,6 @@
 # Today's Date
 
-![Today's Date pinned to the top of Raycast's root search with the formatted date shown as a subtitle](metadata/1.png)
+![Today's Date pinned to the top of Raycast's root search with the formatted date shown as a subtitle](media/root-search.png)
 
 A Raycast [no-view command](https://developers.raycast.com/information/lifecycle/commands#no-view-commands) that shows the current date and time as a live subtitle on Raycast's root search, styled like the built-in "Currently Playing Track" command. Pressing enter copies the formatted value to your clipboard.
 
