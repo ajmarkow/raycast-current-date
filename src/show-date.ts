@@ -17,7 +17,7 @@ const command = async () => {
       title: "Copied to Clipboard",
       message:
         unsupported.length > 0
-          ? `${formatted} — unsupported tokens: ${[...new Set(unsupported)].join(", ")}`
+          ? `Unsupported tokens: ${[...new Set(unsupported)].join(", ")} — ${formatted}`
           : formatted,
     }).show();
   }
