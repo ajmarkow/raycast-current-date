@@ -1838,7 +1838,7 @@
           "name": "dateFormat",
           "type": "textfield",
           "title": "Date Format (strftime)",
-          "description": "strftime format string used to render the date. See https://devhints.io/strftime for the full list of format codes (e.g. %A, %B %d, %Y).",
+          "description": "strftime format string used to render the date. The full strftime directive set is supported — see https://devhints.io/strftime for a reference (e.g. %A, %B %d, %Y).",
           "required": false,
           "default": "%A, %B %d, %Y"
         }
@@ -1847,11 +1847,13 @@
     }
   ],
   "dependencies": {
-    "@raycast/api": "latest"
+    "@raycast/api": "latest",
+    "strftime": "^0.10.3"
   },
   "devDependencies": {
     "@raycast/eslint-config": "^2.2.0",
     "@types/node": "18.18.4",
+    "@types/strftime": "^0.9.8",
     "eslint": "^9.39.4",
     "prettier": "^3.0.3",
     "typescript": "^5.2.2"

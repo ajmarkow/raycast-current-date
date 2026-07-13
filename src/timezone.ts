@@ -1,5 +1,3 @@
-import { DateParts } from "./strftime";
-
 export interface Preferences {
   timezoneType: "iana" | "utc";
   ianaTimezone: string;
@@ -12,21 +10,11 @@ function parseUtcOffsetHours(offset: string): number {
   return match ? Number(match[1]) : 0;
 }
 
-// Resolves the wall-clock date/time fields for the user's preferred timezone.
-// IANA zones use Intl (handles DST); UTC offsets are fixed, so we shift the
-// instant manually and read its UTC fields.
-export function getZonedParts(now: Date, prefs: Preferences): DateParts {
+// Returns the zone's UTC offset in minutes at the given instant.
+// IANA zones are resolved via Intl so DST is handled correctly.
+export function getZoneOffsetMinutes(now: Date, prefs: Preferences): number {
   if (prefs.timezoneType === "utc") {
-    const shifted = new Date(now.getTime() + parseUtcOffsetHours(prefs.utcOffset) * 3600_000);
-    return {
-      year: shifted.getUTCFullYear(),
-      month: shifted.getUTCMonth() + 1,
-      day: shifted.getUTCDate(),
-      hour: shifted.getUTCHours(),
-      minute: shifted.getUTCMinutes(),
-      second: shifted.getUTCSeconds(),
-      weekday: shifted.getUTCDay(),
-    };
+    return parseUtcOffsetHours(prefs.utcOffset) * 60;
   }
 
   const parts = new Intl.DateTimeFormat("en-US", {
@@ -37,21 +25,11 @@ export function getZonedParts(now: Date, prefs: Preferences): DateParts {
     hour: "numeric",
     minute: "numeric",
     second: "numeric",
-    weekday: "short",
     hourCycle: "h23",
   }).formatToParts(now);
 
   const get = (type: Intl.DateTimeFormatPartTypes) => Number(parts.find((p) => p.type === type)?.value ?? 0);
-  const weekdayName = parts.find((p) => p.type === "weekday")?.value ?? "Sun";
-  const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const wallClockUtc = Date.UTC(get("year"), get("month") - 1, get("day"), get("hour"), get("minute"), get("second"));
 
-  return {
-    year: get("year"),
-    month: get("month"),
-    day: get("day"),
-    hour: get("hour"),
-    minute: get("minute"),
-    second: get("second"),
-    weekday: weekdays.indexOf(weekdayName),
-  };
+  return Math.round((wallClockUtc - now.getTime()) / 60_000);
 }

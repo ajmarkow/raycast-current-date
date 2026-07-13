@@ -4,7 +4,7 @@ title: Consider renaming command from 'index' to a descriptive slug
 status: Done
 assignee: []
 created_date: '2026-07-10 03:32'
-updated_date: '2026-07-10 20:29'
+updated_date: '2026-07-13 21:09'
 labels:
   - manifest
   - polish
@@ -29,5 +29,5 @@ package.json:14 sets command name to 'index'. Not user-visible in root search (t
 ## Implementation Notes
 
 <!-- SECTION:NOTES:BEGIN -->
-Renamed command slug from 'index' to 'show-date' in package.json and renamed src/index.ts to src/show-date.ts. Deeplink changes from raycast://extensions/aj-markow/todays-date/index to raycast://extensions/aj-markow/todays-date/show-date. Breaking the deeplink now (pre-v1.0) is intentional. tsc --noEmit passes with no errors.
+Renamed command to 'show-date': package.json command name updated and src/index.ts renamed to src/show-date.ts. Deeplink is now raycast://extensions/aj-markow/todays-date/show-date. tsc and raycast lint pass.
 <!-- SECTION:NOTES:END -->
